@@ -20,3 +20,7 @@ ref={this.filebox}
    type="text"
    ref={ input => this.textInput = input } />
 ```
+
+middleware ref:  
+https://ithelp.ithome.com.tw/articles/10187223
+
