@@ -1,29 +1,35 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import App from './App'
-import * as serviceWorker from './serviceWorker'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { init } from '@rematch/core'
+import App from './App'
+// import * as models from './models'
 
-const task = {
-  state: '',
-  reducers: {
-    taska: (state, playload) => playload,
-    taskb: (state, playload) => playload
-  }
+const count = {
+	state: 0,
+	reducers: {
+		increment: s => s + 1,
+	},
+	effects: dispatch => ({
+		async asyncIncrement() {
+			await new Promise(resolve => {
+				setTimeout(resolve, 1000)
+			})
+			dispatch.count.increment()
+		},
+	}),
 }
 
-let store = init({ task })
+const store = init({
+  models:{
+      count
+  }
+})
 
+// Use react-redux's <Provider /> and pass it the store.
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
 )
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister()
