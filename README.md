@@ -7,7 +7,7 @@ https://medium.com/itsoktomakemistakes/react-ref-api-%E6%80%8E%E9%BA%BC%E7%94%A8
 
 https://medium.com/4cats-io/24hrs-react-101-b287ffad1070
 
-ref 2 way:
+ref 2 ways:
 
 * 
 ```
@@ -16,7 +16,7 @@ ref={this.filebox}
 ```
 * 
 ```
- <input  
-   type="text"  
+ <input
+   type="text"
    ref={ input => this.textInput = input } />
 ```
